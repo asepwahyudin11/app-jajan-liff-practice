@@ -100,6 +100,14 @@ function registerButtonHandlers() {
             if(liff.login()){
                 document.getElementById("pageForm").classList.remove('hide');
                 document.getElementById("pageLogin").classList.add('hide');
+                liff.getProfile()
+                .then(profile => {
+                    const photo = profile.pictureUrl
+                    $('#profilePictureDiv').html(`<img src="${photo}" alt="" class="circle responsive-img">`);
+                })
+                .catch((err) => {
+                    console.log('error', err);
+                });
                 updatePhotoProfile();
             }
         }
@@ -146,21 +154,5 @@ function registerButtonHandlers() {
         .catch((err) => {
             console.log('error', err);
         });
-    });
-}
-
-function updatePhotoProfile() {
-    liff.getProfile().then(function(profile) {
-        const profilePictureDiv = document.getElementById('profilePictureDiv');
-        if (profilePictureDiv.firstElementChild) {
-            profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
-        }
-
-        const img = document.createElement('img');
-        img.src = profile.pictureUrl;
-        img.alt = 'Profile Picture';
-        profilePictureDiv.appendChild(img);
-    }).catch(function(error) {
-        window.alert('Error getting profile: ' + error);
     });
 }

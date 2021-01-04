@@ -85,22 +85,6 @@ function initializeApp() {
     }
     
     registerButtonHandlers();
-    if (liff.isLoggedIn()) {
-        getDisplayName();
-    } else {
-        console.log("Gagal");
-    }
-}
-
-function getDisplayName() {
-    liff.getProfile()
-    .then(profile => {
-        const name = profile.displayName
-        console.log(name);
-    })
-    .catch((err) => {
-        console.log('error', err);
-    });
 }
 
 function registerButtonHandlers() {
@@ -134,33 +118,34 @@ function registerButtonHandlers() {
         let food = 0;
         let drink = 0;
         let price = 0;
-        let name = "Sobat";
         for (i in data) {
             if(data[i].type == "Makanan") { food += data[i].qty; }
             else { drink += data[i].qty; }
             price += (data[i].qty * data[i].price);
         }
 
-        liff.getProfile().then(function(profile) {
-            name = profile.displayName;
-        }).catch(function(error) {
-            window.alert('Error getting profile: ' + error);
+        liff.getProfile()
+        .then(profile => {
+            const name = profile.displayName
+            let message = `Hai ${name},\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n* ${food} Makanan\n* ${drink} Minuman\ndengan total pembayaran Rp.${price},-\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
+            console.log(name);
+
+            if (!liff.isInClient()) {
+                sendAlertIfNotInClient();
+            } else {
+                liff.sendMessages([{
+                    'type': 'text',
+                    'text': message
+                }]).then(function() {
+                    window.alert('Pesan konfirmasi pesanan telah berhasil terkirim!');
+                }).catch(function(error) {
+                    window.alert('Error sending message: ' + error);
+                });
+            }
+        })
+        .catch((err) => {
+            console.log('error', err);
         });
-
-        let message = `Hai ${name},\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n* ${food} Makanan\n* ${drink} Minuman\ndengan total pembayaran Rp.${price},-\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
-
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
-            liff.sendMessages([{
-                'type': 'text',
-                'text': message
-            }]).then(function() {
-                window.alert('Pesan konfirmasi pesanan telah berhasil terkirim!');
-            }).catch(function(error) {
-                window.alert('Error sending message: ' + error);
-            });
-        }
     });
 }
 

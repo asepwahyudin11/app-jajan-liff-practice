@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jajan Kuy</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="materialize.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body onload="loadCart();">
+        <div class="container">
+            <div class="section">
+                <h1>Jajan Kuy!</h1>
+                <blockquote> Hi Customer! Kuy jajan, kakak bisa pilih menu di bawah</blockquote>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <h5>Makanan</h5>
+                <div class="row">
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="images/food1.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="padding:15px">
+                                    <span class="card-title">Makanan 1</span>
+                                    <p>30.000</p>
+                                </div>
+                                <div class="card-action valign-wrapper" style="padding:10px">
+                                    <span>
+                                        <a class="waves-effect waves-light deep-orange darken-3 btn-small" style="padding:0 5px" onclick="addItem(1);"><i class="material-icons">add</i></a>
+                                    </span>
+                                    <span style="padding:0 10px" id="qty1"></span>
+                                    <span id="remove1"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="images/food2.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="padding:15px">
+                                    <span class="card-title">Makanan 2</span>
+                                    <p>25.000</p>
+                                </div>
+                                <div class="card-action valign-wrapper" style="padding:10px">
+                                    <span>
+                                        <a class="waves-effect waves-light deep-orange darken-3 btn-small" style="padding:0 5px" onclick="addItem(2);"><i class="material-icons">add</i></a>
+                                    </span>
+                                    <span style="padding:0 10px" id="qty2"></span>
+                                    <span id="remove2"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="images/food3.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="padding:15px">
+                                    <span class="card-title">Makanan 3</span>
+                                    <p>25.000</p>
+                                </div>
+                                <div class="card-action valign-wrapper" style="padding:10px">
+                                    <span>
+                                        <a class="waves-effect waves-light deep-orange darken-3 btn-small" style="padding:0 5px" onclick="addItem(3);"><i class="material-icons">add</i></a>
+                                    </span>
+                                    <span style="padding:0 10px" id="qty3"></span>
+                                    <span id="remove3"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h5>Minuman</h5>
+                <div class="row">
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="images/drink1.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="padding:15px">
+                                    <span class="card-title">Minuman 1</span>
+                                    <p>15.000</p>
+                                </div>
+                                <div class="card-action valign-wrapper" style="padding:10px">
+                                    <span>
+                                        <a class="waves-effect waves-light deep-orange darken-3 btn-small" style="padding:0 5px" onclick="addItem(4);"><i class="material-icons">add</i></a>
+                                    </span>
+                                    <span style="padding:0 10px" id="qty4"></span>
+                                    <span id="remove4"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="images/drink2.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="padding:15px">
+                                    <span class="card-title">Minuman 2</span>
+                                    <p>20.000</p>
+                                </div>
+                                <div class="card-action valign-wrapper" style="padding:10px">
+                                    <span>
+                                        <a class="waves-effect waves-light deep-orange darken-3 btn-small" style="padding:0 5px" onclick="addItem(5);"><i class="material-icons">add</i></a>
+                                    </span>
+                                    <span style="padding:0 10px" id="qty5"></span>
+                                    <span id="remove5"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="card horizontal">
+                            <div class="card-image">
+                                <img src="images/drink3.jpg">
+                            </div>
+                            <div class="card-stacked">
+                                <div class="card-content" style="padding:15px">
+                                    <span class="card-title">Minuman 3</span>
+                                    <p>20.000</p>
+                                </div>
+                                <div class="card-action valign-wrapper" style="padding:10px">
+                                    <span>
+                                        <a class="waves-effect waves-light deep-orange darken-3 btn-small" style="padding:0 5px" onclick="addItem(6);"><i class="material-icons">add</i></a>
+                                    </span>
+                                    <span style="padding:0 10px" id="qty6"></span>
+                                    <span id="remove6"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="section">
+                <div class="row">
+                    <div class="col s12 m12 l9 xl9">
+                        <h5>Ringkasan</h5>
+                        <div>
+                            <strong>Total</strong> :
+                            <span id="total_food">0</span> Makanan dan
+                            <span id="total_drink">0</span> Minuman
+                        </div>
+                        <div>
+                            <strong>Harga</strong> :
+                            <span id="total_price">0</span>
+                        </div>
+                    </div>
+                    <div class="col s12 m12 l3 xl3">                        
+                        <div class="right" style="width:100%;">
+                            <a class="waves-effect waves-light deep-orange darken-3 btn-large" style="width:100%;margin-top:10px;">Pesan Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--Konten LIFF v2-->
+        <div class="container">
+            <div class="section">
+                <div id="liffAppContent">
+                    <!-- ACTION BUTTONS -->
+                    <div class="buttonGroup">
+                        <div class="buttonRow">
+                            <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
+                            <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
+                            <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
+                        </div>
+         
+                    </div>
+         
+                    <!-- LIFF DATA -->
+                    <div id="liffData">
+                        <h3 id="liffDataHeader" class="textLeft">Informasi:</h3>
+                        <table>
+                            <tr>
+                                <th>isInClient : </th>
+                                <td id="isInClient" class="textLeft"></td>
+                            </tr>
+                            <tr>
+                                <th>isLoggedIn : </th>
+                                <td id="isLoggedIn" class="textLeft"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- LOGIN LOGOUT BUTTONS -->
+                    <div class="buttonGroup">
+                        <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
+                        <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
+                    </div>
+                    <div id="statusMessage">
+                        <div id="isInClientMessage"></div>
+                        <div id="apiReferenceMessage">
+                            <p>Available LIFF methods vary depending on the browser you use to open the LIFF app.</p>
+                            <p>Please refer to the <a
+                                    href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference
+                                    page</a> for more information.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- LIFF ID ERROR -->
+                <div id="liffIdErrorMessage" class="hidden">
+                    <p>You have not assigned any value for LIFF ID.</p>
+                    <p>If you are running the app using Node.js, please set the LIFF ID as an environment variable in your
+                        Heroku account follwing the below steps: </p>
+                    <code id="code-block">
+                        <ol>
+                            <li>Go to `Dashboard` in your Heroku account.</li>
+                            <li>Click on the app you just created.</li>
+                            <li>Click on `Settings` and toggle `Reveal Config Vars`.</li>
+                            <li>Set `MY_LIFF_ID` as the key and the LIFF ID as the value.</li>
+                            <li>Your app should be up and running. Enter the URL of your app in a web browser.</li>
+                        </ol>
+                    </code>
+                    <p>If you are using any other platform, please add your LIFF ID in the <code>index.html</code> file.</p>
+                    <p>For more information about how to add your LIFF ID, see <a
+                            href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">Initializing the LIFF
+                            app</a>.</p>
+                </div>
+                <!-- LIFF INIT ERROR -->
+                <div id="liffInitErrorMessage" class="hidden">
+                    <p>Something went wrong with LIFF initialization.</p>
+                    <p>LIFF initialization can fail if a user clicks "Cancel" on the "Grant permission" screen, or if an error occurs in the process of <code>liff.init()</code>.
+                </div>
+                <!-- NODE.JS LIFF ID ERROR -->
+                <div id="nodeLiffIdErrorMessage" class="hidden">
+                    <p>Unable to receive the LIFF ID as an environment variable.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <!-- Javascript -->
+    <script src="jajan-config.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="liff-starter.js"></script>
+</html>

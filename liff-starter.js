@@ -52,6 +52,12 @@ function initializeLiff(myLiffId) {
         })
         .then(() => {
             // start to use LIFF's api
+            liff.getProfile()
+            .then( profile => {
+              console.log(profile) // print seluruh JSON hasil getProfile
+              console.log(profile.displayName) // print hanya nama pengguna
+              console.log(profile.userId) // print hanya userId pengguna
+            })
             initializeApp();
         })
         .catch((err) => {

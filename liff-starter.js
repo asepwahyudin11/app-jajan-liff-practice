@@ -85,6 +85,22 @@ function initializeApp() {
     }
     
     registerButtonHandlers();
+    if (liff.isLoggedIn()) {
+        getDisplayName();
+    } else {
+        console.log("Gagal");
+    }
+}
+
+function getDisplayName() {
+    liff.getProfile()
+    .then(profile => {
+        const name = profile.displayName
+        console.log(name);
+    })
+    .catch((err) => {
+        console.log('error', err);
+    });
 }
 
 function registerButtonHandlers() {

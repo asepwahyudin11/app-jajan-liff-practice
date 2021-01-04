@@ -72,8 +72,14 @@ function initializeApp() {
         document.getElementById("linkLogout").classList.add('hide');
         document.getElementById("linkExternal").classList.remove('hide');
     } else {
-        document.getElementById("pageLogin").classList.remove('hide');
-        document.getElementById("pageForm").classList.add('hide');
+        if (liff.isLoggedIn()) {
+            document.getElementById("pageLogin").classList.add('hide');
+            document.getElementById("pageForm").classList.remove('hide');
+        } else {
+            document.getElementById("pageLogin").classList.remove('hide');
+            document.getElementById("pageForm").classList.add('hide');
+        }
+
         document.getElementById("linkLogout").classList.remove('hide');
         document.getElementById("linkExternal").classList.add('hide');
     }
@@ -110,7 +116,7 @@ function registerButtonHandlers() {
         let food = 0;
         let drink = 0;
         let price = 0;
-        let name = "";
+        let name = "Sobat";
         for (i in data) {
             if(data[i].type == "Makanan") { food += data[i].qty; }
             else { drink += data[i].qty; }

@@ -17,8 +17,8 @@ window.onload = function() {
                 initializeLiffOrDie(myLiffId);
             })
             .catch(function(error) {
-                document.getElementById("liffAppContent").classList.add('hidden');
-                document.getElementById("nodeLiffIdErrorMessage").classList.remove('hidden');
+                document.getElementById("liffAppContent").classList.add('hide');
+                document.getElementById("nodeLiffIdErrorMessage").classList.remove('hide');
             });
     } else {
         myLiffId = defaultLiffId;
@@ -32,8 +32,8 @@ window.onload = function() {
 */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        document.getElementById("liffAppContent").classList.add('hidden');
-        document.getElementById("liffIdErrorMessage").classList.remove('hidden');
+        document.getElementById("liffAppContent").classList.add('hide');
+        document.getElementById("liffIdErrorMessage").classList.remove('hide');
     } else {
         initializeLiff(myLiffId);
     }
@@ -53,8 +53,8 @@ function initializeLiff(myLiffId) {
             initializeApp();
         })
         .catch((err) => {
-            document.getElementById("liffAppContent").classList.add('hidden');
-            document.getElementById("liffInitErrorMessage").classList.remove('hidden');
+            document.getElementById("liffAppContent").classList.add('hide');
+            document.getElementById("liffInitErrorMessage").classList.remove('hide');
         });
 }
  
@@ -87,8 +87,8 @@ function displayLiffData() {
 */
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
-        document.getElementById('liffLoginButton').classList.toggle('hidden');
-        document.getElementById('liffLogoutButton').classList.toggle('hidden');
+        document.getElementById('liffLoginButton').classList.toggle('hide');
+        document.getElementById('liffLogoutButton').classList.toggle('hide');
         document.getElementById('isInClientMessage').textContent = 'You are opening the app in the in-app browser of LINE.';
     } else {
         document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';

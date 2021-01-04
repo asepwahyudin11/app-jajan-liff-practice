@@ -55,7 +55,6 @@ function initializeLiff(myLiffId) {
             initializeApp();
         })
         .catch((err) => {
-            console.log(err);
             document.getElementById("pageForm").classList.add('hide');
             document.getElementById("pageLogin").classList.add('hide');
             document.getElementById("liffInitErrorMessage").classList.remove('hide');
@@ -117,7 +116,6 @@ function registerButtonHandlers() {
     document.getElementById('liffLogoutButton').addEventListener('click', function() {
         if (liff.isLoggedIn()) {
             liff.logout();
-            $('#profilePictureDiv').html(`<img src="images/user.jpg" alt="" class="circle responsive-img">`);
             window.location.reload();
         }
     });
@@ -156,4 +154,11 @@ function registerButtonHandlers() {
             console.log('error', err);
         });
     });
+}
+
+/**
+* Alert the user if LIFF is opened in an external browser and unavailable buttons are tapped
+*/
+function sendAlertIfNotInClient() {
+    alert('This button is unavailable as LIFF is currently being opened in an external browser.');
 }

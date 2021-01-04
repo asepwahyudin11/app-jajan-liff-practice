@@ -100,6 +100,7 @@ function registerButtonHandlers() {
             if(liff.login()){
                 document.getElementById("pageForm").classList.remove('hide');
                 document.getElementById("pageLogin").classList.add('hide');
+                updatePhotoProfile();
             }
         }
     });
@@ -107,6 +108,7 @@ function registerButtonHandlers() {
     document.getElementById('liffLogoutButton').addEventListener('click', function() {
         if (liff.isLoggedIn()) {
             liff.logout();
+            $('#profilePictureDiv').html(`<img src="images/user.jpg" alt="" class="circle responsive-img">`);
             window.location.reload();
         }
     });
@@ -143,5 +145,21 @@ function registerButtonHandlers() {
                 window.alert('Error sending message: ' + error);
             });
         }
+    });
+}
+
+function updatePhotoProfile() {
+    liff.getProfile().then(function(profile) {
+        const profilePictureDiv = document.getElementById('profilePictureDiv');
+        if (profilePictureDiv.firstElementChild) {
+            profilePictureDiv.removeChild(profilePictureDiv.firstElementChild);
+        }
+
+        const img = document.createElement('img');
+        img.src = profile.pictureUrl;
+        img.alt = 'Profile Picture';
+        profilePictureDiv.appendChild(img);
+    }).catch(function(error) {
+        window.alert('Error getting profile: ' + error);
     });
 }

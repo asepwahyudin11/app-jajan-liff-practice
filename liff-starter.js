@@ -106,13 +106,18 @@ function registerButtonHandlers() {
     });
 
     document.getElementById('sendMessageButton').addEventListener('click', function() {
-        let message = `Hai Customer,\n\n
-                        Terima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n
-                        * 2 Makanan\n
-                        * 2 Minuman\n
-                        dengan total pembayaran Rp.25000,-\n\n
-                        Pesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\n
-                        Mohon ditunggu ya!`;
+        data = JSON.parse(localStorage.getItem('items'));
+        let food = 0;
+        let drink = 0;
+        let price = 0;
+        for (i in data) {
+            if(data[i].type == "Makanan") { food += data[i].qty; }
+            else { drink += data[i].qty; }
+            price += (data[i].qty * data[i].price);
+        }
+
+        let name = getName();
+        let message = `Hai ${name},\n\nTerima kasih telah memesan makanan, berikut adalah review pesanannya:\n\n* ${food} Makanan\n* ${drink} Minuman\ndengan total pembayaran Rp.${price},-\n\nPesanan kakak akan segera diproses dan akan diberitahu jika sudah bisa diambil.\n\nMohon ditunggu ya!`;
 
         if (!liff.isInClient()) {
             sendAlertIfNotInClient();
@@ -126,5 +131,15 @@ function registerButtonHandlers() {
                 window.alert('Error sending message: ' + error);
             });
         }
+    });
+}
+
+function getName() {
+    liff.getProfile()
+    .then(profile => {
+        return profile.displayName;
+    })
+    .catch((err) => {
+        return "Customer";
     });
 }

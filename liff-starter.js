@@ -1,6 +1,6 @@
 window.onload = function() {
     const useNodeJS = false;   // if you are not using a node server, set this value to false
-    const defaultLiffId = "1655380812-MZ1Ge9KZ";   // change the default LIFF value if you are not using a node server
+    const defaultLiffId = "1655541988-GDEXlpLW";   // change the default LIFF value if you are not using a node server
  
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -23,6 +23,7 @@ window.onload = function() {
     } else {
         myLiffId = defaultLiffId;
         initializeLiffOrDie(myLiffId);
+        console.log("Disini guys");
     }
 };
  
@@ -55,6 +56,7 @@ function initializeLiff(myLiffId) {
         .catch((err) => {
             document.getElementById("liffAppContent").classList.add('hide');
             document.getElementById("liffInitErrorMessage").classList.remove('hide');
+            console.log(err);
         });
 }
  
@@ -64,7 +66,6 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     displayLiffData();
     displayIsInClientInfo();
-    registerButtonHandlers();
  
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {

@@ -9,7 +9,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body onload="loadCart();">
-        <div class="container">
+        <div class="container" id="pageForm">
             <div class="section">
                 <h1>Jajan Kuy!</h1>
                 <blockquote> Hi Customer! Kuy jajan, kakak bisa pilih menu di bawah</blockquote>
@@ -165,56 +165,31 @@
                     </div>
                     <div class="col s12 m12 l3 xl3">                        
                         <div class="right" style="width:100%;">
-                            <a class="waves-effect waves-light deep-orange darken-3 btn-large" style="width:100%;margin-top:10px;">Pesan Sekarang</a>
+                            <button id="sendMessageButton" class="waves-effect waves-light deep-orange darken-3 btn-large" style="width:100%;margin-top:10px;">Pesan Sekarang</button>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 center">
+                        <div id="linkExternal"><a id="openWindowButton">Buka di external browser</a></div>
+                        <div id="linkLogout"><a id="liffLogoutButton">Log Out</a></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--Konten LIFF v2-->
-        <div class="container">
+        <div class="container" id="pageLogin">
             <div class="section">
-                <div id="liffAppContent">
-                    <!-- ACTION BUTTONS -->
-                    <div class="buttonGroup">
-                        <div class="buttonRow">
-                            <button id="openWindowButton" class="btn btn-success btn-small">Open External Window</button>
-                            <button id="closeWindowButton" class="btn btn-danger btn-small">Close LIFF App</button>
-                            <button id="sendMessageButton" class="btn btn-warning btn-small">Send Message</button>
-                        </div>
-         
-                    </div>
-         
-                    <!-- LIFF DATA -->
-                    <div id="liffData">
-                        <h3 id="liffDataHeader" class="textLeft">Informasi:</h3>
-                        <table>
-                            <tr>
-                                <th>isInClient : </th>
-                                <td id="isInClient" class="textLeft"></td>
-                            </tr>
-                            <tr>
-                                <th>isLoggedIn : </th>
-                                <td id="isLoggedIn" class="textLeft"></td>
-                            </tr>
-                        </table>
-                    </div>
-                    <!-- LOGIN LOGOUT BUTTONS -->
-                    <div class="buttonGroup">
-                        <button id="liffLoginButton" class="btn btn-success btn-small">Log in</button>
-                        <button id="liffLogoutButton" class="btn btn-warning btn-small">Log out</button>
-                    </div>
-                    <div id="statusMessage">
-                        <div id="isInClientMessage"></div>
-                        <div id="apiReferenceMessage">
-                            <p>Available LIFF methods vary depending on the browser you use to open the LIFF app.</p>
-                            <p>Please refer to the <a
-                                    href="https://developers.line.biz/en/reference/liff/#initialize-liff-app">API reference
-                                    page</a> for more information.</p>
-                        </div>
-                    </div>
-                </div>
+                <h1>Jajan Kuy!</h1>
+                <blockquote> Pengen jajan? Kuy order!</blockquote>
+
+                <p>Ehh tapi kak, sebelum order login dulu ya. Gampang kok, klik aja tombol di bawah ini.</p>
+                <button id="liffLoginButton" class="waves-effect waves-light deep-orange darken-3 btn" >Log In</button>
+            </div>
+        </div>
+
+        <div class="container" id="pageError">
+            <div class="section">
                 <!-- LIFF ID ERROR -->
                 <div id="liffIdErrorMessage" class="hide">
                     <p>You have not assigned any value for LIFF ID.</p>

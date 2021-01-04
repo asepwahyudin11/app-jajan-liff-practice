@@ -52,12 +52,6 @@ function initializeLiff(myLiffId) {
         })
         .then(() => {
             // start to use LIFF's api
-            liff.getProfile()
-            .then( profile => {
-              console.log(profile) // print seluruh JSON hasil getProfile
-              console.log(profile.displayName) // print hanya nama pengguna
-              console.log(profile.userId) // print hanya userId pengguna
-            })
             initializeApp();
         })
         .catch((err) => {
@@ -73,12 +67,20 @@ function initializeLiff(myLiffId) {
  */
 function initializeApp() {
     if (liff.isInClient()) {
+        liff.getProfile()
+        .then( profile => {
+            $('#customer').html(profile.displayName);
+        })
         document.getElementById("pageLogin").classList.add('hide');
         document.getElementById("pageForm").classList.remove('hide');
         document.getElementById("linkLogout").classList.add('hide');
         document.getElementById("linkExternal").classList.remove('hide');
     } else {
         if (liff.isLoggedIn()) {
+            liff.getProfile()
+            .then( profile => {
+                $('#customer').html(profile.displayName);
+            })
             document.getElementById("pageLogin").classList.add('hide');
             document.getElementById("pageForm").classList.remove('hide');
         } else {

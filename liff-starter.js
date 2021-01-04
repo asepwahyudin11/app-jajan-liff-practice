@@ -66,6 +66,7 @@ function initializeLiff(myLiffId) {
 function initializeApp() {
     displayLiffData();
     displayIsInClientInfo();
+    registerButtonHandlers();
  
     // check if the user is logged in/out, and disable inappropriate button
     if (liff.isLoggedIn()) {
@@ -94,4 +95,49 @@ function displayIsInClientInfo() {
     } else {
         document.getElementById('isInClientMessage').textContent = 'You are opening the app in an external browser.';
     }
+}
+
+function registerButtonHandlers() {
+    document.getElementById('openWindowButton').addEventListener('click', function() {
+        liff.openWindow({
+            url: 'https://appjajan.herokuapp.com/', // Isi dengan Endpoint URL aplikasi web Anda
+            external: true
+        });
+    });
+
+    document.getElementById('closeWindowButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.closeWindow();
+        }
+    });
+
+    document.getElementById('liffLoginButton').addEventListener('click', function() {
+        if (!liff.isLoggedIn()) {
+            liff.login();
+        }
+    });
+ 
+    document.getElementById('liffLogoutButton').addEventListener('click', function() {
+        if (liff.isLoggedIn()) {
+            liff.logout();
+            window.location.reload();
+        }
+    });
+
+    document.getElementById('sendMessageButton').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+            liff.sendMessages([{
+                'type': 'text',
+                'text': "Anda telah menggunakan fitur Send Message!"
+            }]).then(function() {
+                window.alert('Ini adalah pesan dari fitur Send Message');
+            }).catch(function(error) {
+                window.alert('Error sending message: ' + error);
+            });
+        }
+    });
 }

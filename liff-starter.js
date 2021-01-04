@@ -70,6 +70,7 @@ function initializeApp() {
         liff.getProfile()
         .then( profile => {
             $('#customer').html(profile.displayName);
+            $('#profilePictureDiv').html(`<img src="${profile.pictureUrl}" alt="" class="circle responsive-img">`);
         })
         document.getElementById("pageLogin").classList.add('hide');
         document.getElementById("pageForm").classList.remove('hide');
@@ -80,6 +81,7 @@ function initializeApp() {
             liff.getProfile()
             .then( profile => {
                 $('#customer').html(profile.displayName);
+                $('#profilePictureDiv').html(`<img src="${profile.pictureUrl}" alt="" class="circle responsive-img">`);
             })
             document.getElementById("pageLogin").classList.add('hide');
             document.getElementById("pageForm").classList.remove('hide');
@@ -108,15 +110,6 @@ function registerButtonHandlers() {
             if(liff.login()){
                 document.getElementById("pageForm").classList.remove('hide');
                 document.getElementById("pageLogin").classList.add('hide');
-                liff.getProfile()
-                .then(profile => {
-                    const photo = profile.pictureUrl
-                    $('#profilePictureDiv').html(`<img src="${photo}" alt="" class="circle responsive-img">`);
-                })
-                .catch((err) => {
-                    console.log('error', err);
-                });
-                updatePhotoProfile();
             }
         }
     });
